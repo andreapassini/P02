@@ -28,13 +28,13 @@ public class ObjectInteraction : MonoBehaviour, IPushable
         {
             SoundManager.Instance.PlayClip(sfxHit);
         }
-        
+
         if (vfxHit != null)
-            return;
-        
-        GameObject vfx;
-        vfx = Instantiate(vfxHit, transform.position, transform.rotation);
-        Destroy(vfx, vfxDuration);
+        {
+            GameObject vfx;
+            vfx = Instantiate(vfxHit, transform.position, transform.rotation);
+            Destroy(vfx, vfxDuration);
+        }
     }
 
     public void Push(Vector3 force)
