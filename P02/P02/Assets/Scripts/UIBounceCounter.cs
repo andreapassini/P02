@@ -4,20 +4,21 @@ using System.Collections.Generic;
 using DefaultNamespace;
 using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UIBounceCounter : MonoBehaviour
 {
-    [SerializeField] private TextMeshPro textCounter;
+    [SerializeField] private TextMeshProUGUI textCounter;
     private int _counter = 0;
     
     private void OnEnable()
     {
-        BounceCounter.onWallBounce += AddBounce;
+        Bouncer.onWallBounce += AddBounce;
     }
 
     private void OnDisable()
     {
-        BounceCounter.onWallBounce -= AddBounce;
+        Bouncer.onWallBounce -= AddBounce;
     }
 
     private void Start()

@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace DefaultNamespace
 {
-    public class BounceCounter: MonoBehaviour
+    public class Bouncer: MonoBehaviour
     {
         public delegate void OnWallBounce(Vector3 bouncePosition);
         public static event OnWallBounce onWallBounce;
@@ -21,6 +21,12 @@ namespace DefaultNamespace
         {
             // Call the event
             if (onWallBounce != null) onWallBounce(collision.transform.position);
+            
+            // Call the Interface
+            if (collision.transform.TryGetComponent(out IPushable ipushable))
+            {
+                ipushable.Push(collision.transform.position - transform.position);
+            }
         }
     }
 }

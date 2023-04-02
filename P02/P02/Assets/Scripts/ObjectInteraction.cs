@@ -15,7 +15,7 @@ public class ObjectInteraction : MonoBehaviour, IPushable
 
     private Rigidbody _rb;
 
-    private void Start()
+    private void Awake()
     {
         _rb = transform.GetComponent<Rigidbody>();
         sfxHit ??= Resources.Load<AudioClip>("sfxDefault.wav");
@@ -39,7 +39,6 @@ public class ObjectInteraction : MonoBehaviour, IPushable
 
     public void Push(Vector3 force)
     {
-        Debug.Log("Hit Sphere");
         _rb.AddForce(force, ForceMode.Impulse);
     }
 }

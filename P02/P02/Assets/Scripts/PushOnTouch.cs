@@ -6,18 +6,23 @@ namespace DefaultNamespace
     public class PushOnTouch: MonoBehaviour
     {
         private Collider _collider;
+        private Rigidbody _rb;
 
         public float force = 5f;
 
-        private void Start()
+        private void Awake()
         {
+            _rb = transform.GetComponent<Rigidbody>();
             _collider = transform.GetComponent<Collider>();
         }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider collision)
         {
-            if(other.TryGetComponent(out IPushable ipushable))
-                ipushable.Push((other.transform.position - transform.position) * force);
+            if (collision.TryGetComponent(out IPushable ipushable))
+            {
+                ipushable.Push(collision.transform.position - transform.position);
+                //collision.transform.GetComponent<Rigidbody>().AddExplosionForce(100f, collision.transform.position, 5);
+            }
         }
     }
 }

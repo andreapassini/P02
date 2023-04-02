@@ -10,7 +10,7 @@ public class LookAtCamera : MonoBehaviour
     {
         if (lookAt)
         {
-            transform.LookAt(lookAt.position);
+            transform.LookAt(lookAt.position - transform.position);
         }
     }
 }
