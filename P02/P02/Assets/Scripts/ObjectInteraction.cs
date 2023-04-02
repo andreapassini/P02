@@ -3,13 +3,14 @@ using System.Collections;
 using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 public class ObjectInteraction : MonoBehaviour, IPushable
 {
-    public float vfxLifetime = 3f;
+    [FormerlySerializedAs("vfxLifetime")] public float vfxDuration = 3f;
     
-    [SerializeField] private AudioSource sfxHit;
+    [SerializeField] private AudioClip sfxHit;
     [SerializeField] private GameObject vfxHit;
 
     private Rigidbody _rb;
@@ -17,21 +18,23 @@ public class ObjectInteraction : MonoBehaviour, IPushable
     private void Start()
     {
         _rb = transform.GetComponent<Rigidbody>();
-        string a = "Assets/Resources/sfxDefault.wav";
+        sfxHit ??= Resources.Load<AudioClip>("sfxDefault.wav");
     }
 
     public void Hit()
     {
         Debug.Log("Playing hit effects");
-        if(sfxHit != null)
-            sfxHit.Play();
+        if (sfxHit != null)
+        {
+            SoundManager.Instance.PlayClip(sfxHit);
+        }
         
         if (vfxHit != null)
             return;
         
         GameObject vfx;
         vfx = Instantiate(vfxHit, transform.position, transform.rotation);
-        Destroy(vfx, vfxLifetime);
+        Destroy(vfx, vfxDuration);
     }
 
     public void Push(Vector3 force)
