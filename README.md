@@ -16,10 +16,16 @@ Get the higher point
 
 # **#TODO**
 
-- Change interface IPush to ITouch
 - Player collider and limitations
+- Arrow PickUp
 - Arrows management
 - Shooting Arrow
 - Smoke potions throw
-- Point system
 - Health potion throw
+- Game Manager
+
+## **DONE**
+- Change interface IPush to ITouch
+- Point system
+- Health potion point script and events
+- Smoke potion point script and events
