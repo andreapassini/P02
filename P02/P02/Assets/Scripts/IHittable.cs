@@ -2,8 +2,8 @@
 
 namespace DefaultNamespace
 {
-    public interface IPushable
+    public interface IHittable
     {
-        void Push(Vector3 force);
+        void Hit(Transform hit);
     }
 }

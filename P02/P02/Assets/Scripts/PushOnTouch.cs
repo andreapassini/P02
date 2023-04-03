@@ -18,10 +18,9 @@ namespace DefaultNamespace
 
         private void OnTriggerEnter(Collider collision)
         {
-            if (collision.TryGetComponent(out IPushable ipushable))
+            if (collision.TryGetComponent(out ITouchable ipushable))
             {
-                ipushable.Push(collision.transform.position - transform.position);
-                //collision.transform.GetComponent<Rigidbody>().AddExplosionForce(100f, collision.transform.position, 5);
+                ipushable.Touch(transform);
             }
         }
     }
