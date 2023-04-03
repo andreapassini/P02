@@ -16,6 +16,7 @@ Get the higher point
 
 # **#TODO**
 
+- Fix point counter name
 - Player collider and limitations
 - Arrow PickUp
 - Arrows management
