@@ -42,6 +42,7 @@ public class PotionLauncher : MonoBehaviour
         
         GameObject newInstance;
         newInstance = Instantiate(newGO, firePoint.position, Random.rotation);
+        Destroy(newInstance, 5f);
 
         // Add force
         newInstance.GetComponent<Rigidbody>().AddForce(Vector3.up * shootingForce, ForceMode.Impulse);
@@ -55,16 +56,21 @@ public class PotionLauncher : MonoBehaviour
         {
             delay = Random.Range(minD, maxD);
             force = Random.Range(minF, maxF);
-            healthProb = Random.Range(0, 1);
-            if (healthProb < healthPotProb)
+            healthProb = Random.Range(0f, 1f);
+            //Debug.Log("healthProb " + healthProb + " - healthPotProb (Par) " + healthPotProb);
+            if (healthProb <= healthPotProb)
             {
                 healthPot = true;
             }
-
-            LaunchPot(false, force);
-            healthPot = false;
+            else
+            {
+                healthPot = false;
+            }
             
             yield return new WaitForSeconds(delay);
+
+            LaunchPot(healthPot, force);
+            healthPot = false;
         }
     }
 }

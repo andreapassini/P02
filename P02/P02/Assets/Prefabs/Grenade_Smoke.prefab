@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: -8404796988366626151}
   - component: {fileID: 1485456416768146239}
   - component: {fileID: 1725578449552811923}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Grenade_Smoke
   m_TagString: Untagged
   m_Icon: {fileID: 0}

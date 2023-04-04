@@ -18,6 +18,7 @@ public class PlayerController : MonoBehaviour
     // Input action not working well so using grab interac
     //public InputAction fireAction; 
 
+    [SerializeField] private AudioClip shootSfx;
     [SerializeField] private GameObject weaponToActivate;
     [SerializeField] private Transform firePoint;
     public float shootingForce = 50f;
@@ -70,7 +71,8 @@ public class PlayerController : MonoBehaviour
             Debug.Log("Out of arrows");
             return;
         }
-
+        
+        SoundManager.Instance.PlayClip(shootSfx);
         _arrows--;
         onShootArrow?.Invoke(_arrows);
 

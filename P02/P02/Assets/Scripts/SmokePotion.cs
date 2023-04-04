@@ -26,9 +26,11 @@ namespace DefaultNamespace
         
         public void DestroyPotion(Transform hitter, GameObject vfx, AudioClip sfx, float fxDuration)
         {
+            /*
             // Destroy arrow
             if(hitter != null)
                 Destroy(hitter);
+            */
             
             // Destroy vfx
             GameObject vfxInstantiated;

@@ -1,6 +1,8 @@
 using System.Collections;
 using System.Collections.Generic;
+using DefaultNamespace;
 using UnityEngine;
+using UnityEngine.InputSystem.XR.Haptics;
 
 public class GameManager : MonoBehaviour
 {
@@ -10,6 +12,9 @@ public class GameManager : MonoBehaviour
     public static event OnLevelStart onLevelStart;
 
     #endregion
+
+    [SerializeField] private LauncherController launcherController;
+    [SerializeField] public int levelOfDifficulty = 3;
     
     public static GameManager Instance { get; private set; }
     private void Awake() 
@@ -23,13 +28,19 @@ public class GameManager : MonoBehaviour
         else 
         { 
             Instance = this; 
-        } 
+        }
+
+        if (launcherController == null)
+        {
+            launcherController = FindObjectOfType<LauncherController>();
+        }
     }
 
     public void StartLevel()
     {
         // Point text
         onLevelStart?.Invoke();
+        launcherController.ActivateLaunchers(levelOfDifficulty);
     }
 
     public void OutOfArrows()
