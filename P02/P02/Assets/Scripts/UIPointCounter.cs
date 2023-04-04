@@ -54,6 +54,7 @@ public class UIPointCounter : MonoBehaviour
     private void AddArrows(float arrows)
     {
         _arrowsCounter += arrows;
+        textArrowCounter.text = _arrowsCounter.ToString();
     }
     private void SetArrows(float arrows)
     {

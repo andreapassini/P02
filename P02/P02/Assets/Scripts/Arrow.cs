@@ -11,7 +11,7 @@ namespace DefaultNamespace {
                 iHittable.Hit(transform);
 
             SoundManager.Instance.PlayClip(arrowHit);
-            Destroy(gameObject);
+            //Destroy(gameObject);
         }
     }
 }
