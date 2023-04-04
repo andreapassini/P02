@@ -4,7 +4,7 @@ namespace DefaultNamespace {
     public class HealthPotion: MonoBehaviour, IHittable
     {
         #region C# Event Health Potion Hit
-            public delegate void OnHealthPotionHit(int gainedArrows);
+            public delegate void OnHealthPotionHit(float gainedArrows);
             public static event OnHealthPotionHit onHealthPotionHit;
         #endregion
 
@@ -42,6 +42,11 @@ namespace DefaultNamespace {
             
             // Destroy Potion
             Destroy(gameObject);
+        }
+
+        public static void InvokeArrowEvent(int numberOfArrows)
+        {
+            onHealthPotionHit?.Invoke(numberOfArrows);
         }
     }
 }

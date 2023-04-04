@@ -6,11 +6,10 @@ namespace DefaultNamespace {
     {
         private void OnCollisionEnter(Collision collision)
         {
-            foreach (Collision col in collision)
-            {
-                if(col.transform.TryGetComponent(out IHittable iHittable))
-                    iHittable.Hit(transform);
-            }
+            if(collision.transform.TryGetComponent(out IHittable iHittable))
+                iHittable.Hit(transform);
+            
+            Destroy(gameObject);
         }
     }
 }

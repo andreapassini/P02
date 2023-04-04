@@ -15,10 +15,12 @@ public class ObjectInteraction : MonoBehaviour, ITouchable
     public delegate void OnDeTouch();
     public static event OnDeTouch onDeTouch;
     #endregion
-    
 
-    [FormerlySerializedAs("vfxLifetime")] public float vfxDuration = 3f;
+    [SerializeField] private PlayerController playerController;
+    [Space]
     
+    [FormerlySerializedAs("vfxLifetime")] public float vfxDuration = 3f;
+
     [SerializeField] private AudioClip sfxHit;
     [SerializeField] private GameObject vfxHit;
 
@@ -54,15 +56,33 @@ public class ObjectInteraction : MonoBehaviour, ITouchable
         TouchAnimation();
         TouchTextOn();
     }
-
-
-
     public void TouchHoverExit()
     {
         Debug.Log(nameof(TouchHoverExit));
         
         IdleAnimation();
         TouchTextOff();
+    }
+
+    public void TouchSelectEnter()
+    {
+        Debug.Log(nameof(TouchSelectEnter));
+        
+        // Add arrows to the player
+        if (playerController == null)
+        {
+            Debug.Log("Missing playerController reference");
+        }
+        else
+        {
+            playerController.AddArrows(10);
+        }
+        
+        // Start the Level
+        GameManager.Instance.StartLevel();
+
+        // Destroy the arrows
+        Destroy(gameObject, .25f);
     }
 
     public void Touch(Transform toucher)
