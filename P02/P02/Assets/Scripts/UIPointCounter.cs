@@ -19,8 +19,6 @@ public class UIPointCounter : MonoBehaviour
     
     private int _pointsCounter = 0;
     private float _arrowsCounter = 0;
-
-    private bool _levelStarted = false;
     
     private void OnEnable()
     {
@@ -50,9 +48,6 @@ public class UIPointCounter : MonoBehaviour
     
     private void AddPoint(int pointToAdd)
     {
-        if (!_levelStarted)
-            return;
-        
         _pointsCounter += pointToAdd;
         textPointCounter.text = _pointsCounter.ToString();
     }
@@ -63,12 +58,10 @@ public class UIPointCounter : MonoBehaviour
     private void SetArrows(float arrows)
     {
         _arrowsCounter = arrows;
+        textArrowCounter.text = _arrowsCounter.ToString();
     }
     private void StartCounter()
     {
-        if (_levelStarted)
-            return;
-        
         textPointName.enabled = true;
         textPointCounter.enabled = true;
         textPointCounter.text = _pointsCounter.ToString();

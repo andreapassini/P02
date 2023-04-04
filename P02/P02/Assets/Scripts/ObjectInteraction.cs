@@ -63,7 +63,6 @@ public class ObjectInteraction : MonoBehaviour, ITouchable
         IdleAnimation();
         TouchTextOff();
     }
-
     public void TouchSelectEnter()
     {
         Debug.Log(nameof(TouchSelectEnter));
@@ -75,14 +74,13 @@ public class ObjectInteraction : MonoBehaviour, ITouchable
         }
         else
         {
-            playerController.AddArrows(10);
+            playerController.AddWeapon(10);
         }
         
         // Start the Level
         GameManager.Instance.StartLevel();
 
-        // Destroy the arrows
-        Destroy(gameObject, .25f);
+        Destroy(gameObject);
     }
 
     public void Touch(Transform toucher)

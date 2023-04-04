@@ -4,46 +4,43 @@ using System.Collections.Generic;
 using DefaultNamespace;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.Serialization;
 
 public class PlayerController : MonoBehaviour
 {
     #region C# Events Arrows
 
     public delegate void OnShootArrow(float amountOfArrows);
-
     public static event OnShootArrow onShootArrow;
 
     #endregion
     
-    public InputAction fireAction;
+    // Input action not working well so using grab interac
+    //public InputAction fireAction; 
 
+    [SerializeField] private GameObject weaponToActivate;
     [SerializeField] private Transform firePoint;
     public float shootingForce = 50f;
 
+    [FormerlySerializedAs("_arrowPrefab")]
     [Tooltip("If empty, Resource Load")]
-    [SerializeField] private GameObject _arrowPrefab;
+    [SerializeField] private GameObject arrowPrefab;
     private float _arrows = 0;
 
     private void OnEnable()
     {
         HealthPotion.onHealthPotionHit += AddArrows;
-        fireAction.performed += ShootArrow;
     }
-
     private void OnDisable()
     {
         HealthPotion.onHealthPotionHit -= AddArrows;
-        fireAction.performed -= ShootArrow;
     }
 
     void Start()
     {
         // path: Assets/Resources/arrow.prefab
-        _arrowPrefab ??= Resources.Load<GameObject>($"arrow.prefab");
-
-        //StartCoroutine(AutoShoot());
+        arrowPrefab ??= Resources.Load<GameObject>($"arrow.prefab");
     }
-
     public void AddArrows(float quantity)
     {
         _arrows += quantity;
@@ -52,13 +49,13 @@ public class PlayerController : MonoBehaviour
     {
         Debug.Log(nameof(ShootArrow));
 
-        if (_arrowPrefab == null)
+        if (arrowPrefab == null)
         {
             Debug.LogError("Arrow prefab not loaded");
             return;
         }
         
-        GameObject newArrow = Instantiate(_arrowPrefab, firePoint.position, firePoint.rotation);
+        GameObject newArrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
         if (newArrow.TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
             rb.AddForce(firePoint.forward.normalized * shootingForce, ForceMode.Impulse);
@@ -77,13 +74,13 @@ public class PlayerController : MonoBehaviour
         _arrows--;
         onShootArrow?.Invoke(_arrows);
 
-        if (_arrowPrefab == null)
+        if (arrowPrefab == null)
         {
             Debug.LogError("Arrow prefab not loaded");
             return;
         }
         
-        GameObject newArrow = Instantiate(_arrowPrefab, firePoint.position, firePoint.rotation);
+        GameObject newArrow = Instantiate(arrowPrefab, firePoint.position, firePoint.rotation);
         if (newArrow.TryGetComponent<Rigidbody>(out Rigidbody rb))
         {
             rb.AddForce(firePoint.forward.normalized * shootingForce, ForceMode.Impulse);
@@ -91,14 +88,13 @@ public class PlayerController : MonoBehaviour
         
         Destroy(newArrow, 3f);
     }
-
-    private IEnumerator AutoShoot()
+    public void AddWeapon(float arrows)
     {
-        while (true)
-        {
-            yield return new WaitForSeconds(.5f);
-            
-            ShootArrow();
-        }
+        Debug.Log(nameof(AddWeapon));
+        
+        // Activate the new GrabInteractable
+        weaponToActivate.SetActive(true);
+        _arrows += arrows;
+        onShootArrow?.Invoke(arrows);
     }
 }
