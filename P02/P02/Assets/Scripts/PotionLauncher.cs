@@ -5,7 +5,7 @@ using UnityEngine;
 
 public class PotionLauncher : MonoBehaviour
 {
-    private Transform firePoint;
+    [SerializeField]private Transform firePoint;
 
     public float minDelay, maxDelay;
     public float heathPotProbability = .25f;
@@ -16,14 +16,14 @@ public class PotionLauncher : MonoBehaviour
     [Space] 
     public GameObject smokePot;
     public GameObject healthPot;
-    
-    void Start()
+
+    private IEnumerator _cor;
+
+    public void StartShooting()
     {
-        firePoint = transform.Find("FirePoint");
-        
-        
         // Start Coroutine
-        StartCoroutine(PotionLauncherCoroutine(minDelay, maxDelay, minForce,  maxForce, heathPotProbability));
+        _cor = PotionLauncherCoroutine(minDelay, maxDelay, minForce,  maxForce, heathPotProbability);
+        StartCoroutine(_cor);
     }
 
     private void LaunchPot(bool isHealthPot, float shootingForce)
@@ -57,7 +57,7 @@ public class PotionLauncher : MonoBehaviour
             delay = Random.Range(minD, maxD);
             force = Random.Range(minF, maxF);
             healthProb = Random.Range(0f, 1f);
-            //Debug.Log("healthProb " + healthProb + " - healthPotProb (Par) " + healthPotProb);
+            //Debug.Log( name + " => healthProb " + healthProb + " - healthPotProb (Par) " + healthPotProb);
             if (healthProb <= healthPotProb)
             {
                 healthPot = true;

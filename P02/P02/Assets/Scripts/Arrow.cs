@@ -10,7 +10,7 @@ namespace DefaultNamespace {
             if(collision.transform.TryGetComponent(out IHittable iHittable))
                 iHittable.Hit(transform);
 
-            SoundManager.Instance.PlayClip(arrowHit);
+            //SoundManager.Instance.PlayClip(arrowHit);
             //Destroy(gameObject);
         }
     }

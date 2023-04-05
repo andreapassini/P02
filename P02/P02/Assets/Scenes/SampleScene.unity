@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 705507994}
-  m_IndirectSpecularColor: {r: 0.18028378, g: 0.22571412, b: 0.30692285, a: 1}
+  m_IndirectSpecularColor: {r: 0.18028352, g: 0.22571376, b: 0.30692244, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -684,6 +684,7 @@ GameObject:
   - component: {fileID: 137633127}
   - component: {fileID: 137633126}
   - component: {fileID: 137633129}
+  - component: {fileID: 137633130}
   m_Layer: 0
   m_Name: Cylinder (5)
   m_TagString: Untagged
@@ -781,6 +782,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c0c68dd523b5941a0cfa5ec652fdee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firePoint: {fileID: 1200216906}
   minDelay: 1
   maxDelay: 3
   heathPotProbability: 0.15
@@ -788,6 +790,18 @@ MonoBehaviour:
   maxForce: 20
   smokePot: {fileID: 3744183174766471250, guid: 8d7b16ba925112b4e9d4051b5aabd985, type: 3}
   healthPot: {fileID: 1461425155577152948, guid: 238a0e64895933547bbd0dd86c1d255e, type: 3}
+--- !u!114 &137633130
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 137633124}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16fd73e4e4ee9294b97a477f6f202b2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &175355869
 GameObject:
   m_ObjectHideFlags: 0
@@ -801,6 +815,7 @@ GameObject:
   - component: {fileID: 175355872}
   - component: {fileID: 175355871}
   - component: {fileID: 175355874}
+  - component: {fileID: 175355875}
   m_Layer: 0
   m_Name: Cylinder (2)
   m_TagString: Untagged
@@ -898,13 +913,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c0c68dd523b5941a0cfa5ec652fdee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minDelay: 1
-  maxDelay: 3
-  heathPotProbability: 0.15
+  firePoint: {fileID: 464616990}
+  minDelay: 2
+  maxDelay: 10
+  heathPotProbability: 0.35
   minForce: 10
   maxForce: 20
   smokePot: {fileID: 3744183174766471250, guid: 8d7b16ba925112b4e9d4051b5aabd985, type: 3}
   healthPot: {fileID: 1461425155577152948, guid: 238a0e64895933547bbd0dd86c1d255e, type: 3}
+--- !u!114 &175355875
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 175355869}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16fd73e4e4ee9294b97a477f6f202b2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &193901996
 GameObject:
   m_ObjectHideFlags: 0
@@ -918,6 +946,7 @@ GameObject:
   - component: {fileID: 193901999}
   - component: {fileID: 193901998}
   - component: {fileID: 193902001}
+  - component: {fileID: 193902002}
   m_Layer: 0
   m_Name: Cylinder (4)
   m_TagString: Untagged
@@ -1015,6 +1044,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c0c68dd523b5941a0cfa5ec652fdee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firePoint: {fileID: 1011951922}
   minDelay: 1
   maxDelay: 3
   heathPotProbability: 0.15
@@ -1022,6 +1052,18 @@ MonoBehaviour:
   maxForce: 20
   smokePot: {fileID: 3744183174766471250, guid: 8d7b16ba925112b4e9d4051b5aabd985, type: 3}
   healthPot: {fileID: 1461425155577152948, guid: 238a0e64895933547bbd0dd86c1d255e, type: 3}
+--- !u!114 &193902002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 193901996}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16fd73e4e4ee9294b97a477f6f202b2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &255098266
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1677,6 +1719,7 @@ GameObject:
   - component: {fileID: 338794246}
   - component: {fileID: 338794245}
   - component: {fileID: 338794248}
+  - component: {fileID: 338794249}
   m_Layer: 0
   m_Name: Cylinder (1)
   m_TagString: Untagged
@@ -1774,13 +1817,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c0c68dd523b5941a0cfa5ec652fdee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  minDelay: 3
-  maxDelay: 7
+  firePoint: {fileID: 779092217}
+  minDelay: 2
+  maxDelay: 4
   heathPotProbability: 0.05
-  minForce: 12.58
-  maxForce: 14.81
+  minForce: 12
+  maxForce: 17
   smokePot: {fileID: 3744183174766471250, guid: 8d7b16ba925112b4e9d4051b5aabd985, type: 3}
   healthPot: {fileID: 1461425155577152948, guid: 238a0e64895933547bbd0dd86c1d255e, type: 3}
+--- !u!114 &338794249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 338794243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16fd73e4e4ee9294b97a477f6f202b2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &340732031
 GameObject:
   m_ObjectHideFlags: 0
@@ -2278,6 +2334,7 @@ GameObject:
   - component: {fileID: 613269998}
   - component: {fileID: 613269997}
   - component: {fileID: 613269996}
+  - component: {fileID: 613269999}
   m_Layer: 8
   m_Name: Wall
   m_TagString: Untagged
@@ -2363,6 +2420,18 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 613269994}
   m_Mesh: {fileID: 10202, guid: 0000000000000000e000000000000000, type: 0}
+--- !u!114 &613269999
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 613269994}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16fd73e4e4ee9294b97a477f6f202b2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &664211558
 GameObject:
   m_ObjectHideFlags: 0
@@ -3348,6 +3417,7 @@ GameObject:
   - component: {fileID: 1035869246}
   - component: {fileID: 1035869245}
   - component: {fileID: 1035869248}
+  - component: {fileID: 1035869249}
   m_Layer: 0
   m_Name: Cylinder
   m_TagString: Untagged
@@ -3445,13 +3515,26 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c0c68dd523b5941a0cfa5ec652fdee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firePoint: {fileID: 1250924007}
   minDelay: 2
-  maxDelay: 5
-  heathPotProbability: 0.47
-  minForce: 9.16
-  maxForce: 14.89
+  maxDelay: 7
+  heathPotProbability: 0.15
+  minForce: 7
+  maxForce: 15
   smokePot: {fileID: 3744183174766471250, guid: 8d7b16ba925112b4e9d4051b5aabd985, type: 3}
   healthPot: {fileID: 1461425155577152948, guid: 238a0e64895933547bbd0dd86c1d255e, type: 3}
+--- !u!114 &1035869249
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1035869243}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16fd73e4e4ee9294b97a477f6f202b2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1042278079
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3713,6 +3796,7 @@ GameObject:
   - component: {fileID: 1139393118}
   - component: {fileID: 1139393117}
   - component: {fileID: 1139393120}
+  - component: {fileID: 1139393121}
   m_Layer: 0
   m_Name: Cylinder (3)
   m_TagString: Untagged
@@ -3810,6 +3894,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c0c68dd523b5941a0cfa5ec652fdee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firePoint: {fileID: 1421365019}
   minDelay: 4
   maxDelay: 6
   heathPotProbability: 0.15
@@ -3817,6 +3902,18 @@ MonoBehaviour:
   maxForce: 14
   smokePot: {fileID: 3744183174766471250, guid: 8d7b16ba925112b4e9d4051b5aabd985, type: 3}
   healthPot: {fileID: 1461425155577152948, guid: 238a0e64895933547bbd0dd86c1d255e, type: 3}
+--- !u!114 &1139393121
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1139393115}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16fd73e4e4ee9294b97a477f6f202b2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1139829117
 GameObject:
   m_ObjectHideFlags: 0
@@ -3973,9 +4070,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4eb69ee024b54665b5d07c3356d5ffa4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _collider: {fileID: 0}
-  _rb: {fileID: 0}
-  force: 15
 --- !u!114 &1139829123
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4237,6 +4331,7 @@ GameObject:
   - component: {fileID: 1155656431}
   - component: {fileID: 1155656430}
   - component: {fileID: 1155656433}
+  - component: {fileID: 1155656434}
   m_Layer: 0
   m_Name: Cylinder (6)
   m_TagString: Untagged
@@ -4334,6 +4429,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 70c0c68dd523b5941a0cfa5ec652fdee, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  firePoint: {fileID: 330231416}
   minDelay: 1
   maxDelay: 3
   heathPotProbability: 0.15
@@ -4341,6 +4437,18 @@ MonoBehaviour:
   maxForce: 20
   smokePot: {fileID: 3744183174766471250, guid: 8d7b16ba925112b4e9d4051b5aabd985, type: 3}
   healthPot: {fileID: 1461425155577152948, guid: 238a0e64895933547bbd0dd86c1d255e, type: 3}
+--- !u!114 &1155656434
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1155656428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16fd73e4e4ee9294b97a477f6f202b2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1190394180
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -5665,10 +5773,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0c19550407f541d44a669a17db5e7ed5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shootSfx: {fileID: 8300000, guid: e1c13b7cc39e1314480d4565fafbc755, type: 3}
+  shootSfx: {fileID: 8300000, guid: a9679a8295d873843b4678a2f7231b61, type: 3}
   weaponToActivate: {fileID: 664211558}
   firePoint: {fileID: 791957258}
-  shootingForce: 50
+  shootingForce: 75
   arrowPrefab: {fileID: 4462338423616848706, guid: 70abb23299db0894dbad74b8063de8aa, type: 3}
 --- !u!1 &1797536753
 GameObject:
@@ -5810,6 +5918,7 @@ GameObject:
   - component: {fileID: 1870469668}
   - component: {fileID: 1870469667}
   - component: {fileID: 1870469670}
+  - component: {fileID: 1870469671}
   m_Layer: 0
   m_Name: Plane
   m_TagString: Untagged
@@ -5901,7 +6010,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1870469665}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 38f6bf3d943ac7945842268c9ef1dca6, type: 3}
   m_Name: 
@@ -5992,6 +6101,18 @@ MonoBehaviour:
   m_Teleporting:
     m_PersistentCalls:
       m_Calls: []
+--- !u!114 &1870469671
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1870469665}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 16fd73e4e4ee9294b97a477f6f202b2d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &1940099865
 PrefabInstance:
   m_ObjectHideFlags: 0
