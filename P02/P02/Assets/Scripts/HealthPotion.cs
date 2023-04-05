@@ -1,10 +1,10 @@
 ﻿using UnityEngine;
 
 namespace DefaultNamespace {
-    public class HealthPotion: MonoBehaviour, IHittable
+    public class HealthPotion: MonoBehaviour, IHittable, IPotion
     {
         #region C# Event Health Potion Hit
-            public delegate void OnHealthPotionHit(int gainedArrows);
+            public delegate void OnHealthPotionHit(float gainedArrows);
             public static event OnHealthPotionHit onHealthPotionHit;
         #endregion
 
@@ -17,28 +17,31 @@ namespace DefaultNamespace {
         public void Hit(Transform hitter)
         {
             onHealthPotionHit?.Invoke(_gainedArrows);
-            DestroyPotion(hitter);
+            DestroyPotion(hitter, vfxHealthExplosion, sfxHealthExplosion, destroyEffectsDuration);
+        }
+        
+        public static void InvokeArrowEvent(int numberOfArrows)
+        {
+            onHealthPotionHit?.Invoke(numberOfArrows);
         }
 
-        private void DestroyPotion(Transform hitter)
+        public void DestroyPotion(Transform hitter, GameObject vfx, AudioClip sfx, float fxDuration)
         {
             // Destroy arrow
             if(hitter != null)
-                Destroy(hitter);
+                Destroy(hitter.gameObject);
             
             // Destroy vfx
-            if (vfxHealthExplosion != null)
-            {
-                GameObject vfxInstantiated;
-                vfxInstantiated = Instantiate(
-                    vfxHealthExplosion,
-                    transform.position,
-                    transform.rotation
-                );
-                Destroy(vfxInstantiated, destroyEffectsDuration);
-            }
+            GameObject vfxInstantiated;
+            vfxInstantiated = Instantiate(
+                vfx,
+                transform.position,
+                transform.rotation
+            );
+            Destroy(vfxInstantiated, fxDuration);
+            
             // Destroy sfx
-            SoundManager.Instance.PlayClip(sfxHealthExplosion);
+            SoundManager.Instance.PlayClip(sfx);
             
             // Destroy Potion
             Destroy(gameObject);
