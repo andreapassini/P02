@@ -15,17 +15,15 @@ Get the higher point
 
 
 # **#TODO**
-
-- Fix point counter name
 - Player collider and limitations
+
+## **DONE**
 - Arrow PickUp
 - Arrows management
 - Shooting Arrow
 - Smoke potions throw
 - Health potion throw
 - Game Manager
-
-## **DONE**
 - Change interface IPush to ITouch
 - Point system
 - Health potion point script and events
