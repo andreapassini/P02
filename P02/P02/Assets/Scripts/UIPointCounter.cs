@@ -17,6 +17,9 @@ public class UIPointCounter : MonoBehaviour
     [SerializeField] private TextMeshProUGUI textArrowCounter;
     [Space]
     
+    [SerializeField] private TextMeshProUGUI textHints;
+    [Space]
+    
     private int _pointsCounter = 0;
     private float _arrowsCounter = 0;
     
@@ -44,6 +47,8 @@ public class UIPointCounter : MonoBehaviour
         
         textArrowName.enabled = false;
         textArrowCounter.enabled = false;
+
+        textHints.enabled = false;
     }
     
     private void AddPoint(int pointToAdd)
@@ -70,5 +75,7 @@ public class UIPointCounter : MonoBehaviour
         textArrowName.enabled = true;
         textArrowCounter.enabled = true;
         textArrowCounter.text = _arrowsCounter.ToString();
+
+        textHints.enabled = true;
     }
 }
