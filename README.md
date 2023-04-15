@@ -1,14 +1,23 @@
-# VR Final Project
+# **VR Final Project**
 Unity and VR
 
-Horror-Shooter game
+<br/><br/>
+# **Game Concept**
 
-## **Goal**
+## **Log line**
+Reach the end of the level while surviving the attacks of the enemies.
 
-Reach the end of the level while surviving the attacks of the enemis
+## Game genre
+First person (VR) Shooter-Horror game.
+
+### Game Platforms
+PC and VR (Oculus Quest 2)
 
 
-# **#TODO**
+<br/><br/>
+# **TO-DO List**
+
+## **TODO**
 - Player collider and limitations
 - Weapons
 
@@ -16,3 +25,4 @@ Reach the end of the level while surviving the attacks of the enemis
 ## **DONE**
 - XR setup
 - Skybox
+
