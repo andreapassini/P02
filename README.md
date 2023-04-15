@@ -1,30 +1,18 @@
-# P02
+# VR Final Project
 Unity and VR
 
-## **Rules and Procedures**
-
-- Collect the **arrows** to start the game
-- Shoot the **smoke potion** to get **points**
-- Shoot the **health potion** to get more **arrows**
-- Arrow hitting a potion => destroy
-- Arrow hitting wall => stuck on the wall
+Horror-Shooter game
 
 ## **Goal**
 
-Get the higher point
+Reach the end of the level while surviving the attacks of the enemis
 
 
 # **#TODO**
 - Player collider and limitations
+- Weapons
+
 
 ## **DONE**
-- Arrow PickUp
-- Arrows management
-- Shooting Arrow
-- Smoke potions throw
-- Health potion throw
-- Game Manager
-- Change interface IPush to ITouch
-- Point system
-- Health potion point script and events
-- Smoke potion point script and events
+- XR setup
+- Skybox
