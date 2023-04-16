@@ -1,18 +1,18 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
-public class DrawPlatform : MonoBehaviour
+namespace MovingPlatformAndUI
 {
-    // Start is called before the first frame update
-    void Start()
+    // Draw the meshes of the nest platform position
+    public class DrawPlatform : MonoBehaviour
     {
-        
-    }
+        void Start()
+        {
+            
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
+        void Update()
+        {
         
+        }
     }
 }

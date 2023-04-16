@@ -10,10 +10,11 @@ namespace MovingPlatformAndUI
         [Tooltip("Move Towards: constant speed \n Lerp: mix of speeds")]
         public MoveType moveType = MoveType.MoveTowards;
         
+        [FormerlySerializedAs("tripPositions")]
         [Space]
-        [SerializeField] private List<Transform> tripPositions;
+        [SerializeField] private List<Transform> _positions;
 
-        private int _pos = 1;
+        private int _positionIndex = 1;
         private Vector3 _nextPosition;
         [Tooltip("Used only with Lerp")]
         [SerializeField] private int _interpolationFramesCount = 50;
@@ -25,10 +26,15 @@ namespace MovingPlatformAndUI
         private bool _move = false;
         public bool loop = false;
 
+        [Space]
+        private StayOnPlatform _stayOnPlatform;
+
+        [SerializeField] private bool addStayOnPlatform = true;
+
         void Start()
         {
             _move = true;
-            _nextPosition = tripPositions[0].position;
+            _nextPosition = _positions[0].position;
         }
 
         void Update()
@@ -64,12 +70,10 @@ namespace MovingPlatformAndUI
             _elapsedFrames = (_elapsedFrames + 1) % (_interpolationFramesCount + 1);  // reset elapsedFrames to zero after it reached (interpolationFramesCount + 1)
             
         }
-
         private void MoveWithMoveTowards()
         {
             transform.position = Vector3.MoveTowards(transform.position, _nextPosition, _speed);
         }
-
         private void CheckReachedPosition()
         {
             if ((_nextPosition - transform.position).magnitude > stoppingDistance)
@@ -77,16 +81,97 @@ namespace MovingPlatformAndUI
 
             _elapsedFrames = 0;
             
-            if(tripPositions.Count <= _pos && !loop)
+            if(_positions.Count <= _positionIndex && !loop)
                 return;
 
-            if (tripPositions.Count <= _pos && loop)
-                _pos = 0;
+            if (_positions.Count <= _positionIndex && loop)
+                _positionIndex = 0;
             
-            Vector3 nextPos = tripPositions[_pos].position;
-            _pos++;
+            Vector3 nextPos = _positions[_positionIndex].position;
+            _positionIndex++;
 
             _nextPosition = nextPos;
+        }
+
+        public void AddPlatformPosition()
+        {
+            // Check Empty Elemnts in list
+            RemoveEmptyElements();
+
+            // Add to List
+            _positions.Add(CreatePlatform());
+
+            DrawPlatform(_positions[_positions.Count - 1]);
+        }
+        
+        private void RemoveEmptyElements()
+        {
+            if (_positions == null)
+            {
+                _positions = new List<Transform>();
+                return;
+            }
+
+            int size = _positions.Count;
+            for (int i = 0; i < size; i++)
+            {
+                var t = _positions[i];
+                if (t.Equals(null))
+                {
+                    _positions.Remove(t);
+                    size--;
+                    i--;
+                }
+            }
+
+            if (size == 0)
+            {
+                _positionIndex = 0;
+            }
+        }
+        private Transform CreatePlatform()
+        {
+            // Check if parent exist
+            if (!_platfromPositionParent)
+                _platfromPositionParent = CreateParent();
+
+            // Save position
+            Vector3 platPos = new Vector3(transform.position.x, transform.position.y, transform.position.z);
+
+            // Save rotation
+            Quaternion platRot = new Quaternion(transform.rotation.x, transform.rotation.y, transform.rotation.z,
+                transform.rotation.w);
+
+            // Save Scale
+            Vector3 plstScale = new Vector3(transform.localScale.y, transform.localScale.x, transform.localScale.z);
+
+            // Create Platfrom
+            GameObject plat = new GameObject();
+            plat.name = name + "_Pos_" + (_positionIndex++);
+            plat.transform.SetPositionAndRotation(platPos, platRot);
+            plat.transform.localScale = plstScale;
+            plat.transform.SetParent(_platfromPositionParent, true);
+
+            // Check parent
+            isParent(plat.transform);
+
+            // Stay on Platform
+            if (addStayOnPlatform)
+            {
+                _stayOnPlatform ??= gameObject.AddComponent<StayOnPlatform>();
+            }
+
+            return plat.transform;
+        }
+        private Transform CreateParent()
+        {
+            // Debug.Log("Creating parent");
+            // Create Parent
+            GameObject parent = new GameObject();
+            parent.name = "ParentOfNextPosition_" + (transform.name);
+            parent.transform.SetPositionAndRotation(Vector3.zero, Quaternion.identity);
+
+            return parent.transform;
         }
     }
 
