@@ -20,6 +20,8 @@ PC and VR (Oculus Quest 2)
 ## **TODO**
 - Player collider and limitations
 - Weapons
+- Spatial UI (UI in world but not on GO)
+- Diegetic UI (In GO in the game world)
 
 
 ## **DONE**
