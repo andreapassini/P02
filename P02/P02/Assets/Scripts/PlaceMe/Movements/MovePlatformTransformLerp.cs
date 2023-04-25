@@ -21,6 +21,10 @@ namespace BrashCreations.PlaceMe.Scripts.Movements
         private int _positionIndex = 0;
         private Vector3 _nextPosition;
         private int _increment = 1;
+        
+        // Total distance between the markers.
+        private float _journeyLength;
+        private float _startTime;
         public void StartMoving(List<Transform> tripPositions, LoopType loopType, float startingDelay, float restTime, float interpolationFramesCount,
             float stoppingDistance)
         {
@@ -39,6 +43,11 @@ namespace BrashCreations.PlaceMe.Scripts.Movements
             _startingCor = StaringDelay(_startingDelay);
             _restingCor = RestingDelay(_restTime);
             _move = false;
+
+            // Keep a note of the time the movement started.
+            _startTime = Time.time;
+            _journeyLength = (_nextPosition - transform.position).magnitude;
+
             StartCoroutine(_startingCor);
         }
 
@@ -47,11 +56,14 @@ namespace BrashCreations.PlaceMe.Scripts.Movements
             if(!_move)
                 return;
             
-            float interpolationRatio = (float)_elapsedFrames / _interpolationFramesCount;
+            // Distance moved equals elapsed time times speed..
+            float distCovered = (Time.time - startTime) * speed;
+
+            // Fraction of journey completed equals current distance divided by total distance.
+            float fractionOfJourney = distCovered / _journeyLength;
+
            
             transform.position = Vector3.Lerp(transform.position, _nextPosition, interpolationRatio);
-            
-            _elapsedFrames = (_elapsedFrames + 1) % (_interpolationFramesCount + 1);  // reset elapsedFrames to zero after it reached (interpolationFramesCount + 1)
             
             CheckReachedPosition();
         }
