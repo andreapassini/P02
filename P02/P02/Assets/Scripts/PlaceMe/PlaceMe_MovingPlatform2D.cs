@@ -2,7 +2,6 @@ using System.Collections;
 using System.Collections.Generic;
 using BrashCreations.PlaceMe.Scripts.Movements;
 using MyNamespace;
-using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -74,10 +73,10 @@ namespace PlaceMe
             switch (movementType)
             {
                 case MovementType.TransformConstantSpeed:
-                    transform.AddComponent<MovePlatformTransformMovePlatformTowards>();
+                    gameObject.AddComponent<MovePlatformTransformMovePlatformTowards>();
                     break;
                 case MovementType.TransformLerp:
-                    transform.AddComponent<MovePlatformTransformLerp>();
+                    gameObject.AddComponent<MovePlatformTransformLerp>();
                     break;
             }
             

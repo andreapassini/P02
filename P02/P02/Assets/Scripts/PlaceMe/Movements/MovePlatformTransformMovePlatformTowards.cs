@@ -91,7 +91,7 @@ namespace BrashCreations.PlaceMe.Scripts.Movements
 
             _nextPosition = _tripPositions[_positionIndex].position;
             
-            StartCoroutine(_restingCor);
+            StartCoroutine(RestingDelay(_restTime));
         }
         private int IndexIncrement()
         {
